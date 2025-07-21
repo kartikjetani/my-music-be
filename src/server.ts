@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import auth from "./middleware/auth";
 import authRoutes from "./routes/authRoutes";
 import playlistRoutes from "./routes/playlistRoutes";
+import songsRoutes from "./routes/songsRoutes";
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/playlist", auth, playlistRoutes);
+app.use("/api/songs", auth, songsRoutes);
 
 app.get("/", (_req, res) => {
     res.send("API is running...");

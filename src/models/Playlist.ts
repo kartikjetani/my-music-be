@@ -5,6 +5,7 @@ export interface IPlaylist extends Document {
     description: string;
     songs: string[];
     userIds: string[];
+    images: string[];
 }
 
 const playlistSchema = new Schema<IPlaylist>({
@@ -12,6 +13,7 @@ const playlistSchema = new Schema<IPlaylist>({
     description: { type: String, required: false },
     songs: { type: [String], required: false },
     userIds: { type: [String], required: false, default: [] },
+    images: { type: [String], required: false, default: [] },
 });
 
 export default mongoose.model<IPlaylist>("Playlist", playlistSchema);

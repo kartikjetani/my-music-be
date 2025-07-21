@@ -42,7 +42,7 @@ export const login = async (req: Request, res: Response) => {
         const payload = { userId: user._id, email: user.email, firstName: user.firstName, lastName: user.lastName };
         const token = jwt.sign(payload, process.env.JWT_SECRET as string, { expiresIn: "7d" });
 
-        res.json({ token });
+        res.json({ token, user: payload });
     } catch (err: any) {
         res.status(500).json({ message: "Server error", error: err?.message || "Error while logging in" });
     }
